@@ -11,7 +11,7 @@ import numpy as np
 #--------------------------- HELP MENU------------
 import argparse
 
-parser = argparse.ArgumentParser(description='Script para Adquisicion de datos del Power Meter, donde se le pasa por parametro  el timepo en minutos o el numero de muestras que se quieren tomar.\n Example: \"rfpm002-cp_us.py s 1000 ./Mediciones_exterior Poscion1\"\n Example: \"rfpm002-cp_us.py t 10 ./Mediciones_exterior Poscion1\"', formatter_class=argparse.RawTextHelpFormatter)
+parser = argparse.ArgumentParser(description='Script para Adquisicion de datos del Power Meter, donde se le pasa por parametro  el tiempo en minutos o el numero de muestras que se quieren tomar.\n Example: \"RFPM002-cp_us.py s 1000 ./Mediciones_exterior Posicion1\"\n Example: \"RFPM002-cp_us.py t 10 ./Mediciones_exterior Posicion1\"', formatter_class=argparse.RawTextHelpFormatter)
 
 parser.add_argument("[option]", help="s (samples), o \nt (time).")
 parser.add_argument("Number", help="for option=s ---> numero de muestras\n"
