@@ -49,7 +49,6 @@ class Controlador():
         #self.ser.flushInput()
     
     def Escribir(self,instr):
-        print(instr)
         self.ser.write(instr.encode())
             
 
@@ -86,13 +85,10 @@ file = Archivo(foldername,filename)
 
 muestras = 0
 
-allowed_forTime= "0123456789"
-allowed_forLevel = ".,0123456789- "
 oldtiempo = "0"
 VectorTimestamp=[]
 meanpotencia = 0
 potenciaold=-100
-DesiredSamples = 10000 #number of desired samples
 valid = True
 
 EscrBuffer = 0
@@ -104,12 +100,8 @@ pw.ContRead() #Este se amplica para que no lea la instruccion.
 while(EscrBuffer):
     out = str(pw.ContRead())
     data = out.split(',')
-    print(data)
     tiempo = data[0][2:12]
-    print(tiempo)
     potencia = data[1][0:6]
-    print(potencia)
-
     try:
         temptiempo = float(tiempo)
         
@@ -128,7 +120,6 @@ while(EscrBuffer):
 
     if (float(potencia)>-70) and (float(potencia)<0 ) and (len(potencia)==6) and (valid): # se descartan valores de potencia incoherentes
         muestras += 1
-        print("0"+str(muestras)+','+ tiempo + ',' + potencia)
         file.Escribir(tiempo, potencia)
         VectorTimestamp.append(int(tiempo))
         meanpotencia = meanpotencia+pow(10,float(potencia)/10.0) #Transformacion de dbm a mWatts
