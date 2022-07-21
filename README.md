@@ -83,4 +83,4 @@ optional arguments:
   -h, --help  show this help message and exit
 
 ```
-
+Al ya compilar el código con las configuraciones insertadas, este tardara 3 segundos incialmente para iniciar el buffer y despues, lo que se vaya a demorar, dependera de las opciones especificadas como la cantidad de muestras o el tiempo de captura.
