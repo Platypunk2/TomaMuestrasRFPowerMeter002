@@ -31,6 +31,7 @@ class Controlador():
         #caso windows
         #puerto = 'COM4'
         try:
+            #En esta primera parte se dictan los parametros necesarios para abrir el puerto y se pueda leer y escribir en el Power Meter
             self.ser = serial.Serial(
             port=puerto,
             baudrate=115200,
@@ -47,11 +48,12 @@ class Controlador():
             raise Exception("Error al incializar puerto: " + str(e))
 
         #self.ser.flushInput()
+
     
+    #Estos 4 metodos son comandos basicos para pyserial que permiten la escritura, lectura, contar elementos del buffer y cerrar el puerto.
     def Escribir(self,instr):
         self.ser.write(instr.encode())
-            
-
+        
     def ContInput(self):
         return self.ser.inWaiting()
 
@@ -61,6 +63,7 @@ class Controlador():
     def End(self):
         self.ser.close()
 
+#Esta clase fue creada con el proposito de crear el archivo .csv lo mas simple y ordenadamente como se era posible
 class Archivo():
     def __init__(self, carpeta, narch):
         if(not os.path.exists(carpeta)):
@@ -68,6 +71,7 @@ class Archivo():
         
         self.save = open(carpeta + narch, 'w')
     
+    #Consta de dos clases que son solo para escribir y cerrar el archivo.
     def Escribir(self,tiempo,potencia):
         self.save.write(tiempo + ',' + potencia+'\n')
 
@@ -76,15 +80,16 @@ class Archivo():
 
 
 
-
+#Aquí se declaran las variables iniciales y se da la primera instrucción
 pw = Controlador()
 pw.Escribir('c'+ '\r')
 foldername = "./"+sys.argv[3]+"/"
 filename=sys.argv[4]+".csv"
 file = Archivo(foldername,filename)
 
-muestras = 0
+muestras = 0 #Este es el contador de muestras
 
+#estas son variables que se utilizaran para poder verificar los datos y obtener medidas que ayuden al analisis de estos
 oldtiempo = "0"
 VectorTimestamp=[]
 meanpotencia = 0
@@ -98,10 +103,13 @@ while(not EscrBuffer):
 
 pw.ContRead() #Este se amplica para que no lea la instruccion.
 while(EscrBuffer):
+    #aquí se realiza la lectura del buffer, los datos se limpian antes de ser verificados
     out = str(pw.ContRead())
     data = out.split(',')
     tiempo = data[0][2:12]
     potencia = data[1][0:6]
+    #Se procede a hacer ciertos filtros para verificar la integridad de los datos y para despues no tener problemas con el analisis de estos
+    #se realiza para el tiempo y la potencia
     try:
         temptiempo = float(tiempo)
         
@@ -119,6 +127,7 @@ while(EscrBuffer):
         print("potencia invalida")
 
     if (float(potencia)>-70) and (float(potencia)<0 ) and (len(potencia)==6) and (valid): # se descartan valores de potencia incoherentes
+        #Al ya pasar este ultimo filtro se procede a añadir los datos en el csv y a realizar operaciones iterativas para el analisis.
         muestras += 1
         file.Escribir(tiempo, potencia)
         VectorTimestamp.append(int(tiempo))
@@ -133,6 +142,8 @@ while(EscrBuffer):
         print ("potencia is not valid: " + potencia)
 
 
+    
+    #En estas dos ultimas condiciones se evalua las opciones especificadas por el usuario, tomando en cuanta el número de muestras y el tiempo que ha pasado segun el RFPM
     if (sys.argv[1] == "s" and muestras == int(sys.argv[2])):
         EscrBuffer = 0
         pw.End()
