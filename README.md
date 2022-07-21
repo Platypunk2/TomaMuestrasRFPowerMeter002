@@ -19,9 +19,9 @@ Esta aplicación es especificamente para el RF Power Meter 002 de HCF ENGINEERIN
 
 ## Sobre el código
 
-El codigo ocupa dos paquetes de python que se deben de instalar mediante pip: pyserial y numpy. Gracias a que se realizo un docker, no es necesario que usted los insatele ya que estos estan especificados en el Dockerfile.
+El código ocupa dos paquetes de python que se deben de instalar mediante pip: pyserial y numpy. Gracias a docker, no es necesario que usted los insatele diredctamente, ya que estos estan especificados en el Dockerfile.
 
-La idea del algoritmo es poder recompilar muestras en un csv, asi que simplemente lo que hace es habrir el puerto, se da una instrucción al buffer y se va monitoreando lo que el buffer tire como respuesta. Los datos son guardados en un .csv con el nombre especificado en las varibles al compilar el código.
+La idea del algoritmo es poder recopilar muestras en un archivo de texto plano .csv, asi de una manera simplificada se abre el puerto serial, se da una instrucción al buffer y se va monitoreando lo que el buffer entregue como respuesta. Los datos son guardados en un .csv con el nombre especificado en las varibles al compilar el código.
 
 ## :shipit: Instalación
 
@@ -34,15 +34,15 @@ Tener Docker instalado
 
 ### Primeros pasos
 
-Cabe decir que este codigo esta pensado para ser ocupado en sistema linux, preferiblemente ubuntu debido a donde se almacenan las tty que será de bastante importancia para trabajar con el puerto serial. 
+Cabe decir que este código esta pensado para ser ocupado en un sistema linux, preferiblemente ubuntu debido a donde se almacenan las tty que será de bastante importancia para trabajar con el puerto serial. 
 
-Al ya tener los archivos del git descargados en las carpetas que más guste se procede a realizar los comandos de docker. Para crear la imagen se utiliza:
+Al ya tener los archivos del git descargados en las carpetas que más guste, se procede a realizar los comandos de docker. Para crear la imagen se utiliza:
 
 ```curl
 docker build -t ['nombre de la imagen en minusculas'] .
 ```
 
-Luego se procede a realizar el docker run con los siguientes parametros:
+Luego se procede a realizar el docker run con los siguientes parámetros:
 
 ```curl
 docker run -it --name ['nombre del contenedor'] --privileged -v /dev:/dev ['nombre imagen']
@@ -54,7 +54,7 @@ Con estos dos comandos ya esta creada la imagen y el contenedor, para poder entr
 docker start -i ['nombre contenedor']
 ```
 
-Cuando salga de este debe aplicar el comando
+Cuando salga de éste, debe aplicar el comando
 
 ```curl
 docker stop ['nombre contenedor']
@@ -89,7 +89,7 @@ optional arguments:
   -h, --help  show this help message and exit
 
 ```
-Al ya compilar el código con las configuraciones insertadas, este tardara 3 segundos incialmente para iniciar el buffer y despues, lo que se vaya a demorar, dependera de las opciones especificadas como la cantidad de muestras o el tiempo de captura.
+Al ya compilar el código con las configuraciones insertadas, este tardará 3 segundos incialmente para iniciar el buffer y después, lo que se vaya a demorar, dependerá de las opciones especificadas, tales como la cantidad de muestras o el tiempo de captura.
 
 ## Elementos extras
 
