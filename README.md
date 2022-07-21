@@ -28,3 +28,5 @@ Tener Docker instalado
 
 ### Primeros pasos
 
+Al ya tener los archivos del git descargados en las carpetas que mas guste
+
