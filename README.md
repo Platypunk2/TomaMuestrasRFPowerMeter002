@@ -64,6 +64,23 @@ python RFPM002-cp_us.py -h
 Se mostrara las variables que se deben de declarar para en la ejecución desde la cosola:
 
 ```curl
+usage: RFPM002-cp_us.py [-h] [option] Number Carpeta Archivo
+
+Script para Adquisicion de datos del Power Meter, donde se le pasa por parametro  el timepo en minutos o el numero de muestras que se quieren tomar.
+ Example: "rfpm002-cp_us.py s 1000 ./Mediciones_exterior Poscion1"
+ Example: "rfpm002-cp_us.py t 10 ./Mediciones_exterior Poscion1"
+
+positional arguments:
+  [option]    s (samples), o 
+              t (time).
+  Number      for option=s ---> numero de muestras
+              for option=t ---> tiempo en minutos.
+  Carpeta     Nombre o ruta de la carpeta donde se guardaran los archivos.
+              En caso de no existir la carpeta se crea automaticamente.
+  Archivo     Nombre del archivo a guardar.
+
+optional arguments:
+  -h, --help  show this help message and exit
 
 ```
 
