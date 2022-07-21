@@ -23,7 +23,7 @@ En primer lugar, se debe de tener claros los pre-requisitos, estas son:
 
 ### Pre-Requisitos
 
-Tener Docker y Docker Compose instalado
+Tener Docker instalado
 * [Installation Guide](https://docs.docker.com/compose/install/)
 
 ### Primeros pasos
