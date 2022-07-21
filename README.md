@@ -66,9 +66,9 @@ Se mostrara las variables que se deben de declarar para en la ejecución desde l
 ```curl
 usage: RFPM002-cp_us.py [-h] [option] Number Carpeta Archivo
 
-Script para Adquisicion de datos del Power Meter, donde se le pasa por parametro  el timepo en minutos o el numero de muestras que se quieren tomar.
- Example: "rfpm002-cp_us.py s 1000 ./Mediciones_exterior Poscion1"
- Example: "rfpm002-cp_us.py t 10 ./Mediciones_exterior Poscion1"
+Script para Adquisicion de datos del Power Meter, donde se le pasa por parametro  el tiempo en minutos o el numero de muestras que se quieren tomar.
+ Example: "RFPM002-cp_us.py s 1000 ./Mediciones_exterior Posicion1"
+ Example: "RFPM002-cp_us.py t 10 ./Mediciones_exterior Posicion1"
 
 positional arguments:
   [option]    s (samples), o 
