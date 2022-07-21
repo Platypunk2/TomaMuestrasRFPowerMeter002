@@ -88,5 +88,6 @@ Al ya compilar el código con las configuraciones insertadas, este tardara 3 seg
 ## Elementos extras
 
 * Power Meter
+
 ![image](https://user-images.githubusercontent.com/90724923/180317810-1f942937-644c-408d-a36d-47d258273130.png)
 
