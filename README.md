@@ -28,5 +28,42 @@ Tener Docker instalado
 
 ### Primeros pasos
 
-Al ya tener los archivos del git descargados en las carpetas que mas guste
+Cabe decir que este codigo esta pensado para ser ocupado en sistema linux, preferiblemente ubuntu debido a donde se almacenan las tty que será de bastante importancia para trabajar con el puerto serial. 
+
+Al ya tener los archivos del git descargados en las carpetas que más guste se procede a realizar los comandos de docker. Para crear la imagen se utiliza:
+
+```curl
+docker build -t ['nombre de la imagen en minusculas'] .
+```
+
+Luego se procede a realizar el docker run con los siguientes parametros:
+
+```curl
+docker run -it --name ['nombre del contenedor'] --privileged -v /dev:/dev ['nombre imagen']
+```
+
+Con estos dos comandos ya esta creada la imagen y el contenedor, para poder entrar a este se utilizar el siguiente comando:
+
+```curl
+docker start -i ['nombre contenedor']
+```
+
+Cuando salga de este debe aplicar el comando
+
+```curl
+docker stop ['nombre contenedor']
+```
+
+### Código
+
+Al ya tener montado el contenedor solo queda ejecutar el código. El codigo se llama "RFPM002-cp_us.py" y al usar el comando desde la consola:
+
+```curl
+python RFPM002-cp_us.py -h
+```
+Se mostrara las variables que se deben de declarar para en la ejecución desde la cosola:
+
+```curl
+
+```
 
