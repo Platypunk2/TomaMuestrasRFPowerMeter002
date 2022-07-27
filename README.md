@@ -19,7 +19,7 @@ Esta aplicación es especificamente para el RF Power Meter 002 de HCF ENGINEERIN
 
 ## Sobre el código
 
-El código ocupa dos paquetes de python que se deben de instalar mediante pip: pyserial y numpy. Gracias a docker, no es necesario que usted los insatele diredctamente, ya que estos estan especificados en el Dockerfile.
+El código ocupa dos paquetes de python que se deben de instalar mediante pip: pyserial y numpy. Gracias a docker, no es necesario que usted los instale directamente, ya que estos estan especificados en el Dockerfile.
 
 La idea del algoritmo es poder recopilar muestras en un archivo de texto plano .csv, asi de una manera simplificada se abre el puerto serial, se da una instrucción al buffer y se va monitoreando lo que el buffer entregue como respuesta. Los datos son guardados en un .csv con el nombre especificado en las varibles al compilar el código.
 
