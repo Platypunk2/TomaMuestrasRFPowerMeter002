@@ -62,7 +62,7 @@ docker stop ['nombre contenedor']
 
 ### Código
 
-Al ya tener montado el contenedor solo queda ejecutar el código. El codigo se llama "RFPM002-cp_us.py" y al usar el comando desde la consola:
+Al ya tener montado el contenedor solo queda ejecutar el código. El código se llama "RFPM002-cp_us.py" y al usar el comando desde la consola:
 
 ```curl
 python RFPM002-cp_us.py -h
