@@ -107,7 +107,15 @@ while(EscrBuffer):
     out = str(pw.ContRead())
     data = out.split(',')
     tiempo = data[0][2:12]
-    potencia = data[1][0:6]
+    potencia = ""
+    if(len(data) == 2):
+        for k in str(data[1]):
+            try:
+                carac = int(k)
+                potencia = potencia + str(k)
+            except:
+                if(str(k) == "-" or str(k) == "."):
+                    potencia = potencia + str(k)
     #Se procede a hacer ciertos filtros para verificar la integridad de los datos y para despues no tener problemas con el analisis de estos
     #se realiza para el tiempo y la potencia
     try:
@@ -119,6 +127,7 @@ while(EscrBuffer):
     if (float(tiempo) >= float(oldtiempo)+10000) or (tiempo == '') or (float(tiempo)<float(oldtiempo)) or (not valid):
         print ("timestamp not valid")
         break
+    print(tiempo, " , ", potencia)
 
     try:
         temppotencia = float(potencia)
@@ -126,7 +135,7 @@ while(EscrBuffer):
         valid = False
         print("potencia invalida")
 
-    if (float(potencia)>-70) and (float(potencia)<0 ) and (len(potencia)==6) and (valid): # se descartan valores de potencia incoherentes
+    if (float(potencia)>-70) and (float(potencia)<0 )and (valid): # se descartan valores de potencia incoherentes
         #Al ya pasar este ultimo filtro se procede a añadir los datos en el csv y a realizar operaciones iterativas para el analisis.
         muestras += 1
         file.Escribir(tiempo, potencia)
@@ -161,4 +170,3 @@ while(EscrBuffer):
         print("MaxPeak is: " + str(maxPeak)) 
         print("Sampling time (ms):"+str(SamplingTime))
     
-
